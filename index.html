@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILETISIM</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <form>
+        <div class="form-container">
+            <label for="name-surname">Ad Soyad:</label>
+                <input class="name-surname" placeholder="Lutfen Adinizi Soyadinizi Giriniz.">
+            <label for="mail">E-posta Adresiniz:</label>
+                <input class="mail" type="email" placeholder="Lutfen E-posta Adresinizi Giriniz.">
+            <label for="contacs">İletisim:</label>
+                <input class="contacs" placeholder="(5xx)xxx-xx-xx">
+            <label for="name-surname">Cinsiyet:</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="gender" value="male"> Erkek
+                    </label>
+                    <label>
+                        <input type="radio" name="gender" value="female"> Kadın
+                    </label>
+                </div>
+            <label for="name-surname">Dogum Tarihi:</label>
+                <input class="birth-date" type="date">
+            <label for="name-surname">Bizi Nereden Duydunuz ?</label>
+                <select class="select-form" autofocus>
+                    <option value="" disabled selected>Lütfen bir seçim yapınız.</option>
+                    <option value="Google">Google</option>
+                    <option value="Youtube">Youtube</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Instagram">İnstagram</option>
+                    <option value="Twitter">Twitter</option>
+                    <option value="Other">Diğer</option>
+                </select>
+            <label for="text">Mesajınız:</label>
+                <textarea name="textarea"></textarea>
+            <button>Gönder</button>
+        </div>
+    </form>
+</body>
+</html>
