@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duru Banyo | Şablon 1: Modern & Aydınlık</title>
+    <style>
+        /* --- Şablon 1: Modern & Aydınlık --- */
+
+        /* TEMEL RENKLER ve Font */
+        :root {
+            --siyah: #333; /* Daha yumuşak siyah */
+            --beyaz: #fff;
+            --gri: #666; /* Daha açık gri */
+            --mavi: #0066cc;
+            --kirmizi: #e63946;
+            --acik-gri: #f7f9fc; /* Çok açık arka plan gri */
+            --border-color: #e9ecef;
+            --font-ana: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Veya 'Poppins', 'Lato' gibi modern fontlar eklenebilir */
+        }
+
+        /* Genel Reset ve Box Sizing */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+             scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-ana);
+            color: var(--siyah);
+            line-height: 1.7; /* Biraz daha ferah satır aralığı */
+            overflow-x: hidden;
+            background-color: var(--beyaz);
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Erişilebilirlik Odak Stilleri */
+        a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+            outline: 2px solid var(--mavi);
+            outline-offset: 3px;
+            box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.2);
+            border-radius: 5px;
+        }
+        :focus:not(:focus-visible) {
+             outline: none;
+             box-shadow: none;
+        }
+
+        /* Konteyner */
+        .container {
+            max-width: 1140px; /* Biraz daha dar konteyner */
+            margin: 0 auto;
+            padding: 0 15px; /* Mobil için padding */
+        }
+
+        /* Butonlar */
+        .btn {
+            display: inline-block;
+            background-color: var(--mavi);
+            color: var(--beyaz);
+            padding: 12px 28px; /* Biraz daha kompakt buton */
+            border-radius: 8px; /* Daha az yuvarlak köşe */
+            text-decoration: none;
+            font-weight: 600; /* Kalın */
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 102, 204, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #0055aa;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 85, 170, 0.3);
+        }
+        .btn-kirmizi {
+            background-color: var(--kirmizi);
+            box-shadow: 0 4px 10px rgba(230, 57, 70, 0.2);
+        }
+        .btn-kirmizi:hover {
+            background-color: #d00000;
+            box-shadow: 0 6px 15px rgba(208, 0, 0, 0.3);
+        }
+        .btn-outline { /* Yeni buton stili */
+             background-color: transparent;
+             color: var(--mavi);
+             border: 2px solid var(--mavi);
+             box-shadow: none;
+        }
+        .btn-outline:hover {
+             background-color: var(--mavi);
+             color: var(--beyaz);
+             box-shadow: 0 4px 10px rgba(0, 102, 204, 0.2);
+        }
+
+
+        /* Bölüm Stilleri */
+        .section {
+            padding: 70px 0;
+        }
+        .section-bg {
+            background-color: var(--acik-gri);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+            font-size: 2.2rem;
+            font-weight: 700; /* Daha kalın başlık */
+            color: var(--siyah);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        .section-title::after { /* Başlık altına çizgi */
+             content: '';
+             position: absolute;
+             bottom: 0;
+             left: 50%;
+             transform: translateX(-50%);
+             width: 60px;
+             height: 3px;
+             background-color: var(--mavi);
+             border-radius: 2px;
+        }
+
+
+        /* PROMOSYON BANNER */
+        .promo-banner {
+            background: var(--kirmizi);
+            color: var(--beyaz);
+            text-align: center;
+            padding: 12px 15px;
+            font-weight: 500; /* Normalden biraz kalın */
+            font-size: 1rem;
+        }
+
+        /* WHATSAPP */
+         /* WhatsApp stilleri öncekiyle aynı kalabilir, buraya eklemiyorum */
+         .whatsapp-float { position: fixed; bottom: 25px; right: 25px; background-color: #25D366; color: white; width: 55px; height: 55px; border-radius: 50%; text-align: center; font-size: 28px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); z-index: 1000; display: flex; align-items: center; justify-content: center; text-decoration: none; animation: pulse 2s infinite; transition: all 0.3s ease; }
+         .whatsapp-float i svg { width: 22px; height: 22px; }
+         .whatsapp-text { position: fixed; bottom: 25px; right: 90px; background-color: #25D366; color: white; padding: 8px 15px; border-radius: 20px; font-size: 13px; font-weight: 500; box-shadow: 0 2px 8px rgba(0,0,0,0.25); z-index: 999; display: flex; align-items: center; white-space: nowrap; }
+         @keyframes pulse { 0% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.3); } 50% { transform: scale(1.08); box-shadow: 0 6px 16px rgba(0,0,0,0.4); } 100% { transform: scale(1); box-shadow: 0 4px 12px rgba(0,0,0,0.3); } }
+
+
+        /* NAVİGASYON */
+        #navbar {
+            background-color: rgba(255, 255, 255, 0.95); /* Hafif şeffaf beyaz */
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 990;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* Daha yumuşak gölge */
+            transition: padding 0.3s ease;
+        }
+        /* --- İsteğe bağlı: Scroll yapınca küçülen nav --- */
+        /* body.scrolled #navbar { padding: 8px 0; box-shadow: 0 3px 10px rgba(0,0,0,0.1); } */
+
+        #navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo a {
+            color: var(--mavi);
+            font-size: 1.9rem; /* Biraz daha büyük logo */
+            font-weight: 700; /* Kalın */
+            text-decoration: none;
+        }
+
+        .nav-links ul {
+            display: flex;
+            list-style: none;
+            gap: 10px; /* Link arası boşluk */
+        }
+
+        .nav-links a {
+            color: var(--siyah); /* Nav link rengi */
+            text-decoration: none;
+            font-weight: 500; /* Normalden biraz kalın */
+            padding: 8px 15px;
+            border-radius: 6px;
+            transition: color 0.3s, background-color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--mavi);
+            background-color: rgba(0, 102, 204, 0.05); /* Çok hafif hover arka plan */
+        }
+
+        /* MOBİL MENÜ */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--siyah); /* Mobil ikon rengi */
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .mobile-nav { /* Mobil menü konteyneri */
+             position: fixed;
+             top: 0;
+             right: -100%; /* Başlangıçta ekran dışında */
+             width: 80%;
+             max-width: 300px;
+             height: 100vh;
+             background-color: var(--beyaz);
+             z-index: 1010;
+             box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+             transition: right 0.4s ease-out;
+             padding: 20px;
+             display: flex;
+             flex-direction: column;
+        }
+         .mobile-nav.active {
+             right: 0; /* Aktif olunca sağdan gelsin */
+         }
+         .mobile-nav .close-btn { /* Kapatma butonu */
+             background: none; border: none; font-size: 2rem; color: var(--gri);
+             position: absolute; top: 15px; right: 15px; cursor: pointer;
+         }
+         .mobile-nav ul {
+             list-style: none; margin-top: 40px;
+         }
+         .mobile-nav a {
+             display: block;
+             padding: 12px 0;
+             color: var(--siyah);
+             text-decoration: none;
+             font-size: 1.1rem;
+             font-weight: 500;
+             border-bottom: 1px solid var(--border-color);
+             transition: color 0.3s;
+         }
+         .mobile-nav a:hover, .mobile-nav a.active {
+             color: var(--mavi);
+         }
+         /* Mobil menü açıkken arka planı karartma */
+         .overlay {
+             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+             background-color: rgba(0,0,0,0.5); z-index: 1005;
+             opacity: 0; visibility: hidden; transition: opacity 0.4s, visibility 0.4s;
+         }
+         .overlay.active { opacity: 1; visibility: visible; }
+
+
+        /* HERO BÖLÜMÜ */
+        .hero {
+            background: linear-gradient(rgba(0, 85, 170, 0.1), rgba(0, 85, 170, 0.05)), /* Çok hafif mavi tonlama */
+                        url('https://images.unsplash.com/photo-1600566752355-35792bedcfea?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center center/cover no-repeat;
+            color: var(--siyah); /* Ana metin rengi */
+            text-align: center;
+            padding: 100px 0; /* Daha az padding */
+            min-height: auto; /* Sabit yükseklik yok */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .hero-content {
+            background-color: rgba(255, 255, 255, 0.85); /* Yarı şeffaf beyaz kutu */
+            padding: 40px 30px;
+            border-radius: 10px;
+            max-width: 750px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--siyah);
+            text-shadow: none; /* Gölge yok */
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            margin-bottom: 30px;
+            color: var(--gri);
+            opacity: 1; /* Opaklık yok */
+            max-width: 600px;
+            margin-left: auto; margin-right: auto;
+        }
+        /* Hero butonu normal .btn stilini kullanacak */
+
+
+        /* AVANTAJLAR */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); /* Min değeri biraz düşür */
+            gap: 25px;
+        }
+        .advantage-card {
+            background: var(--beyaz); /* Arka plan beyaz */
+            border-radius: 8px;
+            padding: 30px 25px;
+            text-align: center;
+            border: 1px solid var(--border-color); /* İnce kenarlık */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05); /* Hafif gölge */
+        }
+        .advantage-card:hover {
+            transform: translateY(-6px); /* Daha az hover efekti */
+            box-shadow: 0 8px 25px rgba(0, 102, 204, 0.1); /* Mavi tonlu hover gölgesi */
+        }
+        .advantage-icon {
+            font-size: 2.5rem; /* İkonu küçült */
+            color: var(--mavi);
+            margin-bottom: 20px;
+            line-height: 1; /* Dikey hizalama için */
+        }
+        .advantage-card h3 {
+            font-size: 1.3rem; /* Başlık küçült */
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .advantage-card p {
+             color: var(--gri);
+             font-size: 0.9rem;
+             line-height: 1.6;
+        }
+
+
+        /* HIZLI TESLİMAT BANNER */
+        .delivery-banner {
+            background-color: var(--mavi);
+            color: var(--beyaz);
+            text-align: center;
+            padding: 50px 20px;
+            border-radius: 10px; /* Köşeleri yuvarla */
+            margin: 70px auto; /* Üst/alt boşluk */
+            max-width: 1140px; /* Konteyner ile hizala */
+        }
+        .delivery-banner h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+         .delivery-banner p {
+             font-size: 1.05rem;
+             margin-bottom: 30px;
+             opacity: 0.9;
+             max-width: 700px;
+             margin-left: auto; margin-right: auto;
+         }
+         /* Buton için .btn ve .btn-kirmizi kullanılacak */
+
+
+        /* HİZMETLER */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Min genişlik ayarı */
+            gap: 30px;
+        }
+        .service-card {
+            background: var(--beyaz);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.07);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .service-img {
+            width: 100%;
+            aspect-ratio: 16 / 10; /* Hizalama için */
+            overflow: hidden;
+        }
+        .service-img img {
+            width: 100%; height: 100%; object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+        .service-card:hover .service-img img {
+            transform: scale(1.05); /* Daha yumuşak büyüme */
+        }
+        .service-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .service-content h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .service-content p {
+            font-size: 0.95rem;
+            color: var(--gri);
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+        /* Butonlar */
+        .service-content .btn-service { /* Yeni sınıf */
+             padding: 8px 18px;
+             font-size: 0.9rem;
+             font-weight: 600;
+             border-radius: 6px;
+             text-decoration: none;
+             transition: all 0.3s ease;
+             cursor: pointer;
+             text-align: center;
+             margin-top: auto;
+             align-self: flex-start;
+             background-color: transparent;
+             border: 1px solid var(--mavi);
+             color: var(--mavi);
+        }
+        .service-content .btn-service:hover {
+             background-color: var(--mavi);
+             color: var(--beyaz);
+        }
+         .service-content .btn-service.kirmizi {
+             border-color: var(--kirmizi);
+             color: var(--kirmizi);
+         }
+         .service-content .btn-service.kirmizi:hover {
+             background-color: var(--kirmizi);
+             color: var(--beyaz);
+         }
+
+        /* FOOTER */
+        footer {
+            background-color: #343a40; /* Koyu gri footer */
+            color: #adb5bd; /* Açık gri metin */
+            padding: 60px 0 20px 0;
+            margin-top: 70px;
+            font-size: 0.95rem;
+        }
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        .footer-column h3 {
+            color: var(--beyaz); /* Beyaz başlık */
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .footer-column p, .footer-column a {
+            color: #adb5bd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: color 0.3s;
+            word-wrap: break-word;
+        }
+        .footer-column a:hover {
+            color: var(--beyaz);
+        }
+        .footer-column ul { list-style: none; } /* Liste işaretlerini kaldır */
+        .footer-column ul li { margin-bottom: 10px; }
+        .footer-column i { /* İkonlar */
+            margin-right: 8px;
+            color: var(--mavi);
+            width: 18px;
+            text-align: center;
+        }
+
+        .copyright {
+            padding-top: 25px;
+            border-top: 1px solid #495057; /* Daha açık ayraç */
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6c757d; /* En soluk renk */
+        }
+
+
+        /* MOBİL RESPONSIVE */
+        @media (max-width: 992px) {
+            .container { max-width: 960px; }
+            .hero h1 { font-size: 2.5rem; }
+            .section-title { font-size: 2rem; }
+            .nav-links { display: none; } /* Tablette de mobil menü */
+            .mobile-menu-btn { display: block; }
+        }
+
+        @media (max-width: 768px) {
+             body { font-size: 15px; }
+             .section { padding: 50px 0; }
+             .container { padding: 0 20px; }
+
+             .hero { padding: 60px 0; }
+             .hero-content { padding: 30px 20px; }
+             .hero h1 { font-size: 2rem; }
+             .hero p { font-size: 1rem; }
+             .btn { padding: 10px 24px; font-size: 0.95rem;}
+
+             .section-title { font-size: 1.8rem; margin-bottom: 35px; }
+             .delivery-banner { padding: 40px 20px; margin: 50px auto; }
+             .delivery-banner h2 { font-size: 1.7rem; }
+             .delivery-banner p { font-size: 1rem; }
+
+             .advantages-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;}
+             .services-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px;}
+             .service-content { padding: 20px; }
+             .service-content h3 { font-size: 1.3rem; }
+
+             .footer-container { gap: 25px; text-align: center;} /* Mobilde ortala */
+             .footer-column { margin-bottom: 15px; }
+             .footer-column h3 { margin-bottom: 15px; }
+        }
+
+        @media (max-width: 576px) {
+             .hero { padding: 50px 0; }
+             .hero-content { padding: 25px 15px; }
+             .hero h1 { font-size: 1.7rem; }
+             .hero p { font-size: 0.95rem; }
+
+             .section-title { font-size: 1.6rem; }
+
+             /* Gridleri tek sütuna zorla */
+             .advantages-grid, .services-grid, .footer-container {
+                 grid-template-columns: 1fr;
+             }
+             .advantage-card { padding: 25px 20px; }
+             .service-card { box-shadow: 0 4px 15px rgba(0,0,0,0.06); }
+
+             .delivery-banner { padding: 35px 15px; margin: 40px auto; }
+             .delivery-banner h2 { font-size: 1.5rem; }
+             .delivery-banner p { font-size: 0.95rem; }
+
+             .promo-banner { font-size: 0.9rem; padding: 10px; }
+
+             .whatsapp-float { width: 50px; height: 50px; bottom: 15px; right: 15px;}
+             .whatsapp-text { bottom: 15px; right: 75px; font-size: 12px; padding: 7px 12px;}
+        }
+
+    </style>
+</head>
+<body>
+    <div class="promo-banner">
+        🚀 HIZLI TESLİMAT! Siparişleriniz 3 iş gününde montajlı teslim. Hemen iletişime geçin!
+    </div>
+
+    <a href="https://wa.me/905301234567?text=Duru%20Banyo%20hakkında%20bilgi%20alabilir%20miyim?" class="whatsapp-float" target="_blank" aria-label="WhatsApp ile İletişime Geçin">
+        <i><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 .9c101.2 0 183 81.8 183 183 0 33.4-9.3 65.6-26.7 94.4l-18.6 21.4-13.1 7.4-10.5 6.1-11.7 6.8-12.1 7-12.7 7.2-13.2 7.1-14.3 7.8-7.9 4.2-2.8 1.5-19.6 10.4-8.5 4.5-20.7 11-21.2 11.2-23.6 12.5-13.9 7.4-28.5 11.7-43.8 12.7-11.8 1.9-24.1 2.9-36.7 2.9h-.1c-99.4 0-180-80.6-180-180 0-99.4 80.6-180 180-180 49.7 0 95.7 19.4 130.1 53.7l17.5 17.8 17.8 17.6z"/></svg></i>
+    </a>
+    <div class="whatsapp-text">WhatsApp'tan Hızlı İletişim</div>
+
+    <header id="navbar">
+        <div class="container">
+            <div class="logo">
+                <a href="#hero">DURU BANYO</a>
+            </div>
+            <nav class="nav-links">
+                 <ul> <li><a href="#hero">Anasayfa</a></li>
+                     <li><a href="#avantajlar">Avantajlar</a></li>
+                     <li><a href="#hizmetler">Hizmetler</a></li>
+                     <li><a href="#iletisim">İletişim</a></li>
+                 </ul>
+            </nav>
+            <button class="mobile-menu-btn" aria-label="Menüyü Aç" aria-controls="mobile-nav">☰</button>
+        </div>
+    </header>
+
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+         <button class="close-btn" aria-label="Menüyü Kapat">&times;</button>
+         <ul>
+             <li><a href="#hero">Anasayfa</a></li>
+             <li><a href="#avantajlar">Avantajlar</a></li>
+             <li><a href="#hizmetler">Hizmetler</a></li>
+             <li><a href="#iletisim">İletişim</a></li>
+         </ul>
+    </div>
+    <div class="overlay"></div> <section class="hero" id="hero"> <div class="hero-content">
+             <h1>İzmir'in En Hızlı Duşa Kabin Uzmanı</h1>
+             <p>Profesyonel imalat, ekspres montaj ve kaliteli tamirat hizmetleri. <strong>3 iş gününde teslim garantisi!</strong></p>
+             <a href="#iletisim" class="btn">ÜCRETSİZ KEŞİF İSTE</a>
+        </div>
+    </section>
+
+    <section class="section section-bg" id="avantajlar">
+         <div class="container">
+             <h2 class="section-title">Neden Duru Banyo?</h2>
+             <div class="advantages-grid">
+                 <div class="advantage-card"> <div class="advantage-icon">⚡</div> <h3>Hızlı Teslimat</h3> <p>Siparişleriniz İzmir içinde ortalama 3 iş günü içinde adresinizde montajlı teslim edilir. Acil ihtiyaçlarınıza anında çözüm!</p> </div>
+                <div class="advantage-card"> <div class="advantage-icon">🔧</div> <h3>Uzman Montaj</h3> <p>Sektörde 10 yılı aşkın deneyime sahip profesyonel ekibimizle, hatasız ve temiz montaj garantisi.</p> </div>
+                <div class="advantage-card"> <div class="advantage-icon">📏</div> <h3>Özel Ölçü Üretim</h3> <p>Banyonuzun ölçüleri ne olursa olsun, %100 uyumlu, yerinde keşif sonrası size özel imalat yapıyoruz.</p> </div>
+                <div class="advantage-card"> <div class="advantage-icon">💯</div> <h3>2 Yıl Garanti</h3> <p>Tüm duşa kabin ürünlerimizde malzeme ve montaj hatalarına karşı 2 yıl tam Duru Banyo garantisi.</p> </div>
+             </div>
+         </div>
+    </section>
+
+    <section> <div class="container">
+             <div class="delivery-banner">
+                 <h2>ACİL DURUMLAR İÇİN EKSPRES HİZMET!</h2>
+                 <p>Kırık cam, su sızdıran conta, bozulan kapı veya ani gelişen duşa kabin ihtiyacınız mı var? İzmir geneline <strong>aynı gün veya en geç 24 saat içinde</strong> müdahale ediyoruz!</p>
+                 <a href="tel:+905301234567" class="btn btn-kirmizi">HEMEN ARA: 0 530 123 45 67</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="hizmetler">
+        <div class="container">
+             <h2 class="section-title">HİZMETLERİMİZ</h2>
+             <div class="services-grid">
+                 <div class="service-card">
+                     <div class="service-img"><img src="https://files.ekmcdn.com/639703/images/vantage-matt-black-corner-entry-and-offset-corner-entry-shower-enclosure-various-sizes-234490-p.webp?w=1000&h=1000&v=2572023-090710" alt="Duşa Kabin İmalat Hizmeti"></div>
+                     <div class="service-content"> <h3>İMALAT</h3> <p>Modern tasarımlar, kaliteli profiller ve temperli camlar kullanarak banyonuza özel ölçülerde duşa kabin üretimi. <strong>Aracısız, en uygun fiyat garantisi!</strong></p> <a href="#iletisim" class="btn-service">TEKLİF AL →</a> </div>
+                 </div>
+                 <div class="service-card">
+                     <div class="service-img"><img src="https://media.istockphoto.com/id/1424195041/photo/plumber-installing-a-shower-cabin-in-bathroom.jpg?s=612x612&w=0&k=20&c=5b5f32WWECdqSJwor7L7Cbrom40FnUht_fikoNkADdc=" alt="Duşa Kabin Montaj Hizmeti"></div>
+                     <div class="service-content"> <h3>MONTAJ</h3> <p>Yeni duşa kabininizin veya mevcut kabininizin sökme-takma işlemlerini profesyonel ekipmanlarla titizlikle yapıyoruz. <strong>İzmir'in tüm ilçelerine montaj hizmeti!</strong></p> <a href="#iletisim" class="btn-service">RANDEVU AL →</a> </div>
+                 </div>
+                  <div class="service-card">
+                     <div class="service-img"><img src="https://www.unlock.com/wp-content/uploads/2022/10/repairs-the-shower-cabin-plumber-in-uniform-is-in-2022-09-26-16-54-37-utc-scaled-e1668729682541.jpg" alt="Duşa Kabin Tamirat Hizmeti"></div>
+                     <div class="service-content"> <h3>TAMİRAT</h3> <p>Kırılan duşa kabin camı değişimi, tekerlek arızaları, su sızdıran conta ve fitillerin yenilenmesi gibi tüm tamirat işleri. <strong>Hızlı ve garantili servis!</strong></p> <a href="tel:+905301234567" class="btn-service kirmizi">HEMEN ARA →</a> </div>
+                 </div>
+             </div>
+        </div>
+    </section>
+
+    <footer id="iletisim">
+        <div class="container">
+             <div class="footer-container">
+                 <div class="footer-column"> <h3>DURU BANYO</h3> <p>İzmir'de duşa kabin imalatı, montajı ve tamiratında güvenilir adresiniz. Kaliteli malzeme, hızlı çözümler ve müşteri memnuniyeti.</p> </div>
+                 <div class="footer-column"> <h3>HIZLI LİNKLER</h3> <ul> <li><a href="#hero">Anasayfa</a></li> <li><a href="#avantajlar">Avantajlar</a></li> <li><a href="#hizmetler">Hizmetler</a></li> <li><a href="#iletisim">İletişim</a></li> </ul> </div>
+                 <div class="footer-column"> <h3>İLETİŞİM BİLGİLERİ</h3> <ul> <li><a href="tel:+905301234567"><i aria-hidden="true">📞</i> 0 530 123 45 67</a></li> <li><a href="https://wa.me/905301234567?text=Duru%20Banyo%20hakkında%20bilgi%20alabilir%20miyim?" target="_blank"><i aria-hidden="true">💬</i> WhatsApp Destek</a></li> <li><a href="mailto:info@durubanyo.com"><i aria-hidden="true">✉️</i> info@durubanyo.com</a></li> <li><p><i aria-hidden="true">📍</i> İzmir, Türkiye (Tüm İlçeler)</p></li> </ul> </div>
+             </div>
+             <div class="copyright">
+                 <p>© 2025 Duru Banyo. Tüm hakları saklıdır.</p>
+             </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobil menü toggle (Yeni versiyon)
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const closeBtn = document.querySelector('.mobile-nav .close-btn');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        const overlay = document.querySelector('.overlay');
+
+        function openMenu() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'true');
+            mobileNav.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeMenu() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            mobileMenuBtn.setAttribute('aria-expanded', 'false');
+            mobileNav.setAttribute('aria-hidden', 'true');
+        }
+
+        mobileMenuBtn.addEventListener('click', openMenu);
+        closeBtn.addEventListener('click', closeMenu);
+        overlay.addEventListener('click', closeMenu);
+
+        // Mobil menü linkine tıklayınca menüyü kapat
+         mobileNavLinks.forEach(link => {
+             link.addEventListener('click', closeMenu);
+         });
+
+         // --- İsteğe bağlı: Scroll yapınca navbara class ekle ---
+         /*
+         const navbar = document.getElementById('navbar');
+         window.addEventListener('scroll', () => {
+             if (window.scrollY > 50) { // 50px scroll sonrası
+                 document.body.classList.add('scrolled');
+             } else {
+                 document.body.classList.remove('scrolled');
+             }
+         });
+         */
+
+    </script>
+
+</body>
+</html>
